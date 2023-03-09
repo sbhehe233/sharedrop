@@ -8,7 +8,8 @@ ENV SECRET=$SECRET
 WORKDIR /srv/app
 COPY package.json yarn.lock ./
 RUN yarn --frozen-lockfile --non-interactive
+RUN yarn build
 
 COPY . /srv/app
 #EXPOSE 80
-CMD [ "yarn", "develop" ]
+CMD [ "node", "server.js" ]
